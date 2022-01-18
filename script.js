@@ -29,7 +29,6 @@ let products = JSON.parse(localStorage.getItem("products"))
       },
     ];
 
-
 //CREATE
 
 function readProducts(products) {
@@ -94,7 +93,7 @@ function createProduct() {
 
   try {
     if (!title || !category || !price || !img)
-      throw new Error("Please type in a product of your choice");
+      throw new Error("Please fill in the blank spaces");
     products.push({
       title,
       category,
@@ -222,5 +221,5 @@ function sortCategory() {
     return products.category == category;
   });
   readProducts(foundProducts);
-  console.log(foundProducts)
+  console.log(foundProducts);
 }

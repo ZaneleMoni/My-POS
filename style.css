@@ -9,6 +9,10 @@
     height: 300px;
     object-fit: cover;
 }
-body{
-    background-image:url('index.jpeg') ;
+#label{
+    padding: 30px;
 }
+#labels{
+margin-left: 350px;
+}
+

@@ -12,7 +12,7 @@ function readCart(cart) {
     .toFixed(2);
   cart.forEach((products, i) => {
     document.querySelector("#cart").innerHTML += `
-    
+    <container class="cont">
     <div class="card mb-3" style="w:100;" position-relative"> 
     <button type="button" class="position-absolute" top-0 start-100 translate-middle badge btn btn-danger" onclick="deleteFromCart(${i})">X</button>
     
@@ -32,31 +32,33 @@ function readCart(cart) {
         </div>
         <div class="card-footer bg-white d-flex justify-content-between p-0 pt-3">
         <p>Total Cost:</p>
-        <span>R${(parseFloat(products.price) * parseInt(products.qty)).toFixed(2)}</span>
-        <p class="card-text"price:R${
-          products.price
-        }></p>
+        <span>R${(parseFloat(products.price) * parseInt(products.qty)).toFixed(
+          2
+        )}</span>
+        <p class="card-text"price:R${products.price}></p>
         <p class="card-text"><small class="text-muted"></small></p>
       </div>
     </div>
   </div>
 </div>  
+</container>
         `;
   });
-  document.querySelector("#cart-footer").innerHTML += `
+  document.querySelector("#cart-footer").innerHTML = `
   <h3>Total cost: R${total}</h3>
 <button class="btn btn-primary btn-lg" onclick="Checkout()">Checkout</button>`;
 }
+readCart(cart);
 
 function updateCart(i) {
-  let qty = document.querySelector(`#updateCartQty${i}`).value;
+  let qty = document.querySelector(`#addQty${i}`).value;
   cart[i] = {
     ...cart[i],
     qty,
   };
   localStorage.setItem("cart", JSON.stringify(cart));
+  readCart(cart);
 }
-readCart(cart);
 
 //Delete
 function deleteFromCart(i) {
